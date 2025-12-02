@@ -1,0 +1,323 @@
+/* ===== CSS RESET & VARIABLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* Premium Color Palette */
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #111111;
+    --tertiary-bg: #1a1a1a;
+    --accent-color: #00d4ff;
+    --accent-gradient: linear-gradient(135deg, #00d4ff 0%, #0072ff 100%);
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #888888;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    
+    /* Spacing */
+    --section-padding: 12rem 8%;
+    --container-max-width: 1400px;
+    
+    /* Effects */
+    --glow-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --hover-transform: translateY(-5px);
+}
+
+/* ===== BASE STYLES ===== */
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+    animation: modalFadeIn 0.5s ease;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: white;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2001;
+}
+
+.modal-close:hover {
+    background: var(--accent-color);
+    transform: rotate(90deg);
+}
+
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2001;
+}
+
+.modal-nav-btn {
+    width: 60px;
+    height: 60px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: white;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-nav-btn:hover {
+    background: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.modal-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 1.6rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 1rem 1rem;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Resume Modal Styles */
+.resume-modal {
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    background: var(--secondary-bg);
+    border-radius: 2rem;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+}
+
+.resume-header {
+    background: var(--accent-gradient);
+    padding: 3rem;
+    text-align: center;
+}
+
+.resume-header h3 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.resume-header p {
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.resume-body {
+    padding: 3rem;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.resume-section {
+    margin-bottom: 3rem;
+}
+
+.resume-section h4 {
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--glass-border);
+}
+
+.resume-item {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: var(--glass-bg);
+    border-radius: 1rem;
+    border: 1px solid var(--glass-border);
+}
+
+.resume-item h5 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.resume-item .date {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    font-family: var(--font-mono);
+    margin-bottom: 1rem;
+}
+
+.resume-item p {
+    color: var(--text-secondary);
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+.resume-footer {
+    padding: 2rem 3rem;
+    background: var(--tertiary-bg);
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 3rem;
+    background: var(--accent-gradient);
+    color: white;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: var(--hover-transform);
+    box-shadow: var(--glow-shadow);
+}
+
+/* Resume Icon */
+.resume-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 10;
+    animation: floatResume 4s ease-in-out infinite;
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.resume-icon:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
+}
+
+@keyframes floatResume {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* Responsive adjustments for modals */
+@media (max-width: 768px) {
+    .modal-nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+    }
+    
+    .resume-modal {
+        width: 95%;
+    }
+    
+    .resume-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+        top: 15px;
+        right: 15px;
+    }
+}

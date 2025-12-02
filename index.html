@@ -1,0 +1,2703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Afnan | Embedded Systems Innovator</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            /* Premium Color Palette */
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #111111;
+            --tertiary-bg: #1a1a1a;
+            --accent-color: #00d4ff;
+            --accent-gradient: linear-gradient(135deg, #00d4ff 0%, #0072ff 100%);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #888888;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'Fira Code', monospace;
+            
+            /* Spacing */
+            --section-padding: 12rem 8%;
+            --container-max-width: 1400px;
+            
+            /* Effects */
+            --glow-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --hover-transform: translateY(-5px);
+        }
+
+        /* ===== BASE STYLES ===== */
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            font-size: 1.6rem;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HORIZONTAL NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 8%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-glow {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            font-size: 1.6rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 1rem 0;
+            cursor: pointer;
+        }
+
+        .nav-link.active {
+            color: var(--text-primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            font-size: 1.6rem;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: var(--hover-transform);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            width: 5rem;
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        .theme-toggle i {
+            font-size: 2rem;
+            color: var(--text-primary);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-top: 8rem;
+            min-height: 100vh;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        /* ===== HOME SECTION ===== */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .bg-layer-1,
+        .bg-layer-2,
+        .bg-layer-3 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bg-layer-1 {
+            background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .bg-layer-2 {
+            background: radial-gradient(circle at 80% 20%, rgba(0, 114, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .bg-layer-3 {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, transparent 100%);
+        }
+
+        .home-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            align-items: center;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .home-content {
+            z-index: 2;
+        }
+
+        .intro-badge {
+            display: inline-block;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 0.8rem 1.6rem;
+            border-radius: 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 3rem;
+            font-family: var(--font-mono);
+        }
+
+        .home-title {
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .title-line {
+            display: block;
+        }
+
+        .title-line.accent {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .home-description {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .home-cta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .cta-btn {
+            padding: 1.5rem 3rem;
+            border-radius: 1rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cta-btn.primary {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+        }
+
+        .cta-btn.primary:hover {
+            transform: var(--hover-transform);
+            box-shadow: var(--glow-shadow);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .cta-btn.secondary:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: var(--hover-transform);
+        }
+
+        .quick-stats {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Home Visual Elements */
+        .home-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-image {
+            position: relative;
+            width: 40rem;
+            height: 40rem;
+            border-radius: 2rem;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.2) contrast(1.1);
+            transition: all 0.5s ease;
+        }
+
+        .profile-image:hover img {
+            filter: grayscale(0) contrast(1.2);
+            transform: scale(1.02);
+        }
+
+        .image-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0.1;
+            border-radius: 2rem;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+
+        /* Resume Icon */
+        .resume-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 10;
+            animation: floatResume 4s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .resume-icon:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
+        }
+
+        @keyframes floatResume {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .float-element {
+            position: absolute;
+            width: 6rem;
+            height: 6rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent-color);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .element-1 {
+            top: 10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+
+        .element-2 {
+            top: 60%;
+            right: -5%;
+            animation-delay: 2s;
+        }
+
+        .element-3 {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-family: var(--font-mono);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 4rem;
+            background: var(--border-color);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% { height: 4rem; opacity: 1; }
+            50% { height: 6rem; opacity: 0.5; }
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        #about {
+            background: var(--secondary-bg);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 8rem;
+        }
+
+        .section-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-family: var(--font-mono);
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .about-container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            line-height: 1.7;
+        }
+
+        .text-accent {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .about-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            transform: var(--hover-transform);
+            border-color: var(--accent-color);
+        }
+
+        .highlight-item i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-top: 0.5rem;
+        }
+
+        .highlight-item h4 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .highlight-item p {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .about-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: var(--hover-transform);
+            border-color: var(--accent-color);
+        }
+
+        .stat-icon {
+            width: 6rem;
+            height: 6rem;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        /* ===== EXPERTISE SECTION ===== */
+        #expertise {
+            background: var(--primary-bg);
+        }
+
+        .expertise-container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .skill-category {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: var(--hover-transform);
+            border-color: var(--accent-color);
+        }
+
+        .skill-category h3 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-name {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--tertiary-bg);
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 3px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover {
+            transform: var(--hover-transform);
+            border-color: var(--accent-color);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .tool-name {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        #projects {
+            background: var(--secondary-bg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: var(--hover-transform);
+            border-color: var(--accent-color);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: var(--tertiary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-tag {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* ===== ACHIEVEMENTS SECTION ===== */
+        #achievements {
+            background: var(--primary-bg);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .achievement-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: var(--hover-transform);
+            border-color: var(--accent-color);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .achievement-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .achievement-card:hover .achievement-image img {
+            transform: scale(1.05);
+        }
+
+        .achievement-content {
+            padding: 2rem;
+        }
+
+        .achievement-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .achievement-description {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== JOURNEY SECTION ===== */
+        #journey {
+            background: var(--secondary-bg);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--accent-gradient);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            position: relative;
+            margin: 2rem 0;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-left: 30px;
+            padding-right: 0;
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: var(--hover-transform);
+            border-color: var(--accent-color);
+        }
+
+        .timeline-date {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
+        }
+
+        .timeline-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-description {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        #contact {
+            background: var(--primary-bg);
+        }
+
+        .contact-container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: var(--hover-transform);
+            border-color: var(--accent-color);
+        }
+
+        .contact-icon {
+            width: 6rem;
+            height: 6rem;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .contact-details h4 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-details p {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 4rem;
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--tertiary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 1rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: var(--hover-transform);
+            box-shadow: var(--glow-shadow);
+        }
+
+        /* ===== MODAL STYLES ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: modalFadeIn 0.5s ease;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 50px;
+            height: 50px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: white;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+
+        .modal-close:hover {
+            background: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 2001;
+        }
+
+        .modal-nav-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: white;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-nav-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1.6rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Resume Modal Styles */
+        .resume-modal {
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            background: var(--secondary-bg);
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .resume-header {
+            background: var(--accent-gradient);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .resume-header h3 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .resume-header p {
+            font-size: 1.6rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .resume-body {
+            padding: 3rem;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+
+        .resume-section {
+            margin-bottom: 3rem;
+        }
+
+        .resume-section h4 {
+            font-size: 2.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--glass-border);
+        }
+
+        .resume-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 1rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .resume-item h5 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-item .date {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-family: var(--font-mono);
+            margin-bottom: 1rem;
+        }
+
+        .resume-item p {
+            color: var(--text-secondary);
+            font-size: 1.6rem;
+            line-height: 1.6;
+        }
+
+        .resume-footer {
+            padding: 2rem 3rem;
+            background: var(--tertiary-bg);
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 3rem;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: 1rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: var(--hover-transform);
+            box-shadow: var(--glow-shadow);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .navbar {
+                padding: 2rem 4%;
+            }
+            
+            .home-container {
+                gap: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 2rem;
+            }
+            
+            .nav-links {
+                gap: 2rem;
+            }
+            
+            .main-content {
+                margin-top: 12rem;
+            }
+            
+            .home-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 4rem;
+            }
+            
+            .home-cta {
+                justify-content: center;
+            }
+            
+            .quick-stats {
+                justify-content: center;
+            }
+            
+            .profile-image {
+                width: 30rem;
+                height: 30rem;
+            }
+            
+            .resume-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+                top: 15px;
+                right: 15px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: start;
+                gap: 1rem;
+            }
+            
+            .section-line {
+                width: 100%;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+                padding-left: 70px;
+            }
+
+            .modal-nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+            
+            .modal-close {
+                top: -40px;
+                right: -40px;
+            }
+            
+            .modal-caption {
+                bottom: -40px;
+                font-size: 1.4rem;
+            }
+            
+            .resume-modal {
+                width: 95%;
+            }
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            right: 3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 999;
+        }
+
+        .progress-dot {
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            background: var(--text-muted);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .progress-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.3);
+        }
+
+        .progress-dot:hover {
+            background: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .progress-indicator {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo-glow">A</span>
+            <span class="logo-text">Muhammed Afnan</span>
+        </div>
+        
+        <div class="nav-links">
+            <a class="nav-link active" data-section="home">Home</a>
+            <a class="nav-link" data-section="about">About</a>
+            <a class="nav-link" data-section="expertise">Expertise</a>
+            <a class="nav-link" data-section="projects">Projects</a>
+            <a class="nav-link" data-section="achievements">Achievements</a>
+            <a class="nav-link" data-section="journey">Journey</a>
+            <a class="nav-link" data-section="contact">Contact</a>
+        </div>
+
+        <div class="nav-social">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-google-scholar"></i></a>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-dot active" data-section="home"></div>
+        <div class="progress-dot" data-section="about"></div>
+        <div class="progress-dot" data-section="expertise"></div>
+        <div class="progress-dot" data-section="projects"></div>
+        <div class="progress-dot" data-section="achievements"></div>
+        <div class="progress-dot" data-section="journey"></div>
+        <div class="progress-dot" data-section="contact"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="home-background">
+                <div class="bg-layer-1"></div>
+                <div class="bg-layer-2"></div>
+                <div class="bg-layer-3"></div>
+            </div>
+            
+            <div class="home-container">
+                <div class="home-content">
+                    <div class="intro-badge">
+                        <span>Embedded Systems Innovator</span>
+                    </div>
+                    
+                    <h1 class="home-title">
+                        <span class="title-line">Muhammed</span>
+                        <span class="title-line accent">Afnan</span>
+                    </h1>
+                    
+                    <p class="home-description">
+                        Electronics & Communication Engineer specializing in <span class="highlight">embedded systems</span>, 
+                        <span class="highlight">IoT development</span>, and <span class="highlight">innovation-based engineering solutions</span>. 
+                        Currently studying for Master's in ESECA at Toulouse INP – ENSEEIHT, France.
+                    </p>
+                    
+                    <div class="home-cta">
+                        <button class="cta-btn primary" data-section="projects">
+                            <span>View My Work</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="cta-btn secondary" data-section="contact">
+                            <span>Get In Touch</span>
+                        </button>
+                    </div>
+                    
+                    <div class="quick-stats">
+                        <div class="stat">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">IEEE Paper</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="home-visual">
+                    <div class="profile-container">
+                        <div class="profile-image" id="profileImage">
+                            <img src="assets/profile.jpg" alt="Muhammed Afnan - Professional Photo">
+                            <div class="image-glow"></div>
+                            <!-- Resume Icon Added Here -->
+                            <div class="resume-icon" id="resumeIcon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                        </div>
+                        <div class="floating-elements">
+                            <div class="float-element element-1">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="float-element element-2">
+                                <i class="fas fa-satellite"></i>
+                            </div>
+                            <div class="float-element element-3">
+                                <i class="fas fa-wave-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Engineering Innovation with Purpose</h3>
+                        <p>
+                            I am <span class="text-accent">Muhammed Afnan</span>, an Electronics & Communication Engineering graduate 
+                            passionate about creating impactful engineering solutions. My work bridges the gap between 
+                            theoretical concepts and practical implementations in embedded systems and IoT.
+                        </p>
+                        
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h4>Academic Excellence</h4>
+                                    <p>Electronics & Communication with Computer Science minor</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-rocket"></i>
+                                <div>
+                                    <h4>Research Contributor</h4>
+                                    <p>First author of IEEE conference paper on magnetic field control systems</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Global Perspective</h4>
+                                    <p>Pursuing Master's in ESECA at Toulouse INP – ENSEEIHT, France 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">5+</span>
+                                <span class="stat-label">Programming Languages</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">10+</span>
+                                <span class="stat-label">Embedded Projects</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Innovation Focus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">My Expertise</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="expertise-container">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-microchip"></i> Embedded Systems</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">ARM Cortex-M</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <span class="skill-name">RTOS</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <span class="skill-name">Sensor Integration</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">C/C++</span>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <span class="skill-name">MATLAB</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-wifi"></i> IoT & Communication</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">LoRaWAN</span>
+                                <span class="skill-percentage">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="82"></div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <span class="skill-name">BLE/WiFi</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <span class="skill-name">MQTT/HTTP</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center;">Tools & Technologies</h3>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="tool-name">Altium Designer</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="tool-name">STM32CubeIDE</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <div class="tool-name">LTspice</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="tool-name">ESP-IDF</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div class="tool-name">Git</div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="tool-name">AWS IoT</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card" data-project="tongueControl">
+                    <div class="project-image" data-image="assets/headset.jpeg">
+                        <img src="assets/headset.jpeg" alt="Tongue Motion–Tracked Wheelchair Control">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Tongue Motion–Tracked Wheelchair Control</h3>
+                        <p class="project-description">
+                            Developed a magnetic-field-based tongue tracking system using GY-273 sensors and ESP32
+                            for wheelchair control without cameras.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Embedded C</span>
+                            <span class="project-tag">ESP32</span>
+                            <span class="project-tag">Sensor Fusion</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>View Details</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-project="evCharging">
+                    <div class="project-image" data-image="assets/loop_png.png">
+                        <img src="assets/loop_png.png" alt="EV Charging Station Monitoring">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">The LOOP – EV Charging Station Monitoring</h3>
+                        <p class="project-description">
+                            UI/UX and system design for monitoring electricity generated from EV charging stations
+                            and enabling slot booking for EV users.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">IoT</span>
+                            <span class="project-tag">UI/UX</span>
+                            <span class="project-tag">Cloud</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>View Details</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-project="paintMixer">
+                    <div class="project-image" data-image="assets/paintproject.jpeg">
+                        <img src="assets/paintproject.jpeg" alt="Portable Paint Mixing Device">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Vistosa – Portable Paint Mixing Device</h3>
+                        <p class="project-description">A compact, efficient acrylic paint mixing device designed for artists; mini-project highly appreciated.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Product Design</span>
+                            <span class="project-tag">Prototyping</span>
+                            <span class="project-tag">Mechanical</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>View Details</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Achievements</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-image" data-image="assets/iitm.jpg">
+                        <img src="assets/iitm.jpg" alt="IIT Madras National Competition Win">
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">National Competition Winner at IIT Madras</h3>
+                        <p class="achievement-description">
+                            Won national level competition at IIT Madras for the tongue-controlled wheelchair project.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-image" data-image="assets/yuva.jpeg">
+                        <img src="assets/yuva.jpeg" alt="YUVA MITS Innovation Chair">
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">Innovation Chair - YUVA MITS</h3>
+                        <p class="achievement-description">
+                            Served as Innovation Chair at YUVA MITS, fostering innovation and technical development among students.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-image" data-image="assets/rot.jpeg">
+                        <img src="assets/rot.jpeg" alt="Rotaract Club Community Service">
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">Community Service Chair- Rotaract Club Of MITS</h3>
+                        <p class="achievement-description">
+                            Served as community service Chair at Rotaract club of MITS, developing and leading multiple community service programs among students.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-image" data-image="assets/siamits.jpg">
+                        <img src="assets/siamits.jpg" alt="Space Club Founding Member">
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">Founding Member - Space Club SIA MITS</h3>
+                        <p class="achievement-description">
+                            One of the founding members of the Space Club at SIA MITS, promoting space technology and research.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-image" data-image="assets/hackathonwin.jpg">
+                        <img src="assets/hackathonwin.jpg" alt="Hackathon Wins">
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">Multiple Hackathon Wins</h3>
+                        <p class="achievement-description">
+                            Won multiple hackathons with innovative solutions in embedded systems and IoT domains.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">My Journey</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2024</div>
+                        <h3 class="timeline-title">B.Tech in Electronics & Communication</h3>
+                        <p class="timeline-description">
+                            Muthoot Institute of Technology & Science with minor in Computer Science.
+                            Focused on embedded systems, signal processing, and innovation projects.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h3 class="timeline-title">IEEE Conference Paper Publication</h3>
+                        <p class="timeline-description">
+                            First author of research paper on magnetic field-based control systems
+                            presented at international conference.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3 class="timeline-title">Tongue Control Project Development</h3>
+                        <p class="timeline-description">
+                            Led team in developing innovative wheelchair control system using
+                            magnetic field sensors and embedded systems.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 (Expected)</div>
+                        <h3 class="timeline-title">Master's in ESECA</h3>
+                        <p class="timeline-description">
+                            Accepted to Toulouse INP – ENSEEIHT, France for advanced studies in
+                            Electronic Systems for Embedded and Communicating Applications.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>afnan@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Kerala, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Availability</h4>
+                            <p>Open for collaborations and research opportunities</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name</label>
+                            <input type="text" class="form-input" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" class="form-input" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <input type="text" class="form-input" id="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea class="form-textarea" id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div class="modal-overlay" id="imageModal">
+        <div class="modal-close" id="modalClose">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-nav">
+            <button class="modal-nav-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div class="modal-overlay" id="resumeModal">
+        <div class="modal-close" id="resumeModalClose">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="resume-modal">
+            <div class="resume-header">
+                <h3>Muhammed Afnan</h3>
+                <p>Embedded Systems Engineer & IoT Developer</p>
+            </div>
+            <div class="resume-body">
+                <div class="resume-section">
+                    <h4>Professional Summary</h4>
+                    <div class="resume-item">
+                        <p>Electronics & Communication Engineer specializing in embedded systems, IoT development, and innovation-based engineering solutions. Currently pursuing Master's in ESECA at Toulouse INP – ENSEEIHT, France.</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h4>Education</h4>
+                    <div class="resume-item">
+                        <h5>Master's in ESECA</h5>
+                        <div class="date">Expected 2025</div>
+                        <p>Toulouse INP – ENSEEIHT, France</p>
+                    </div>
+                    <div class="resume-item">
+                        <h5>B.Tech in Electronics & Communication</h5>
+                        <div class="date">2020 - 2024</div>
+                        <p>Muthoot Institute of Technology & Science</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h4>Experience</h4>
+                    <div class="resume-item">
+                        <h5>Embedded Systems Developer</h5>
+                        <div class="date">2023 - Present</div>
+                        <p>Developed innovative embedded solutions including tongue-controlled wheelchair system and IoT-based monitoring systems.</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h4>Skills</h4>
+                    <div class="resume-item">
+                        <p><strong>Embedded Systems:</strong> ARM Cortex-M, RTOS, Sensor Integration</p>
+                        <p><strong>Programming:</strong> C/C++, Python, MATLAB</p>
+                        <p><strong>IoT & Communication:</strong> LoRaWAN, BLE/WiFi, MQTT/HTTP</p>
+                        <p><strong>Tools:</strong> Altium Designer, STM32CubeIDE, Git, AWS IoT</p>
+                    </div>
+                </div>
+                
+                <div class="resume-section">
+                    <h4>Achievements</h4>
+                    <div class="resume-item">
+                        <p>• National Competition Winner at IIT Madras</p>
+                        <p>• IEEE Conference Paper Publication</p>
+                        <p>• Multiple Hackathon Wins</p>
+                        <p>• Innovation Chair - YUVA MITS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="resume-footer">
+                <button class="download-btn" id="downloadResume">
+                    <i class="fas fa-download"></i>
+                    <span>Download Resume</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- JavaScript Implementation -->
+    <script>
+        // ===== SIMPLIFIED AND WORKING JAVASCRIPT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔄 Initializing portfolio...');
+            initializePortfolio();
+        });
+
+        function initializePortfolio() {
+            initNavigation();
+            initThemeToggle();
+            initContactForm();
+            initSkillAnimations();
+            initScrollAnimations();
+            initResumeModal();
+            initImageModal();
+            
+            console.log('✅ Portfolio initialized successfully!');
+        }
+
+        // ===== FIXED NAVIGATION =====
+        function initNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const progressDots = document.querySelectorAll('.progress-dot');
+            const sections = document.querySelectorAll('.section');
+            const ctaButtons = document.querySelectorAll('.cta-btn[data-section]');
+
+            // Function to show section
+            function showSection(sectionId) {
+                console.log('📌 Navigating to:', sectionId);
+                // Remove active class from all
+                navLinks.forEach(link => link.classList.remove('active'));
+                progressDots.forEach(dot => dot.classList.remove('active'));
+                
+                // Add active class to current
+                const correspondingNavLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+                const correspondingProgressDot = document.querySelector(`.progress-dot[data-section="${sectionId}"]`);
+                
+                if (correspondingNavLink) correspondingNavLink.classList.add('active');
+                if (correspondingProgressDot) correspondingProgressDot.classList.add('active');
+                
+                // Smooth scroll to section
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+
+            // Navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetSection = this.getAttribute('data-section');
+                    showSection(targetSection);
+                });
+            });
+
+            // Progress dots
+            progressDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetSection = this.getAttribute('data-section');
+                    showSection(targetSection);
+                });
+            });
+
+            // CTA buttons
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetSection = this.getAttribute('data-section');
+                    showSection(targetSection);
+                });
+            });
+
+            // Scroll-based section activation
+            let isScrolling;
+            window.addEventListener('scroll', function() {
+                window.clearTimeout(isScrolling);
+                isScrolling = setTimeout(function() {
+                    const scrollPosition = window.scrollY + 100;
+                    
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+                        
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                            const sectionId = section.id;
+                            
+                            // Remove active class from all
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            progressDots.forEach(dot => dot.classList.remove('active'));
+                            
+                            // Add active class to current
+                            const correspondingNavLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+                            const correspondingProgressDot = document.querySelector(`.progress-dot[data-section="${sectionId}"]`);
+                            
+                            if (correspondingNavLink) correspondingNavLink.classList.add('active');
+                            if (correspondingProgressDot) correspondingProgressDot.classList.add('active');
+                        }
+                    });
+                }, 100);
+            });
+        }
+
+        // ===== THEME TOGGLE =====
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            if (!themeToggle) {
+                console.log('❌ Theme toggle not found');
+                return;
+            }
+            
+            const themeIcon = themeToggle.querySelector('i');
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-mode');
+                
+                if (document.body.classList.contains('light-mode')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            });
+            
+            console.log('✅ Theme toggle initialized');
+        }
+
+        // ===== CONTACT FORM =====
+        function initContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Simple validation
+                    if (!name || !email || !subject || !message) {
+                        alert('Please fill in all fields.');
+                        return;
+                    }
+                    
+                    // Show success message
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+                console.log('✅ Contact form initialized');
+            }
+        }
+
+        // ===== SKILL ANIMATIONS =====
+        function initSkillAnimations() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            console.log(`🎯 Found ${skillBars.length} skill bars`);
+            
+            // Animate skill bars when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progress = entry.target.getAttribute('data-progress');
+                        console.log(`📊 Animating skill bar to ${progress}%`);
+                        entry.target.style.width = `${progress}%`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            skillBars.forEach(bar => {
+                bar.style.width = '0%';
+                observer.observe(bar);
+            });
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        function initScrollAnimations() {
+            // Check if GSAP is available
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                
+                // Animate elements on scroll
+                const elements = gsap.utils.toArray('.highlight-item, .stat-card, .project-card, .timeline-content');
+                console.log(`🎬 Animating ${elements.length} elements on scroll`);
+                
+                elements.forEach(element => {
+                    gsap.from(element, {
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 85%',
+                            toggleActions: 'play none none reverse'
+                        },
+                        y: 50,
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
+                });
+            }
+        }
+
+        // ===== RESUME MODAL =====
+        function initResumeModal() {
+            const resumeIcon = document.getElementById('resumeIcon');
+            const resumeModal = document.getElementById('resumeModal');
+            const resumeModalClose = document.getElementById('resumeModalClose');
+            const downloadResume = document.getElementById('downloadResume');
+            
+            console.log('📄 Resume modal elements:', {
+                resumeIcon: !!resumeIcon,
+                resumeModal: !!resumeModal,
+                resumeModalClose: !!resumeModalClose
+            });
+            
+            if (resumeIcon && resumeModal) {
+                // Open resume modal
+                resumeIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    console.log('📄 Opening resume modal');
+                    openResumeModal();
+                });
+                
+                // Profile image also opens resume modal
+                const profileImage = document.getElementById('profileImage');
+                if (profileImage) {
+                    profileImage.addEventListener('click', function(e) {
+                        console.log('👤 Profile image clicked');
+                        if (e.target === this || e.target.classList.contains('profile-image')) {
+                            openResumeModal();
+                        }
+                    });
+                }
+                
+                // Close resume modal
+                resumeModalClose.addEventListener('click', function() {
+                    console.log('❌ Closing resume modal');
+                    closeResumeModal();
+                });
+                
+                // Close on overlay click
+                resumeModal.addEventListener('click', function(e) {
+                    if (e.target === resumeModal) {
+                        console.log('🎯 Overlay clicked - closing resume modal');
+                        closeResumeModal();
+                    }
+                });
+                
+                // Close on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && resumeModal.classList.contains('active')) {
+                        console.log('⌨️ Escape pressed - closing resume modal');
+                        closeResumeModal();
+                    }
+                });
+                
+                // Download resume button
+                if (downloadResume) {
+                    downloadResume.addEventListener('click', function() {
+                        console.log('⬇️ Download resume clicked');
+                        alert('Resume download would start here! In a real implementation, this would download your PDF resume.');
+                        // You can replace this with actual download logic:
+                        // window.open('path/to/your/resume.pdf', '_blank');
+                    });
+                }
+                
+                console.log('✅ Resume modal initialized');
+            } else {
+                console.log('❌ Resume modal elements not found');
+            }
+        }
+
+        function openResumeModal() {
+            const resumeModal = document.getElementById('resumeModal');
+            if (!resumeModal) return;
+            
+            console.log('📂 Opening resume modal...');
+            document.body.style.overflow = 'hidden';
+            resumeModal.classList.add('active');
+            
+            // Animate modal content
+            if (typeof gsap !== 'undefined') {
+                gsap.from('.resume-modal', {
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            }
+        }
+
+        function closeResumeModal() {
+            const resumeModal = document.getElementById('resumeModal');
+            if (!resumeModal) return;
+            
+            resumeModal.classList.remove('active');
+            document.body.style.overflow = '';
+            console.log('📂 Resume modal closed');
+        }
+
+        // ===== IMAGE MODAL =====
+        function initImageModal() {
+            const imageModal = document.getElementById('imageModal');
+            const modalClose = document.getElementById('modalClose');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            console.log('🖼️ Image modal elements:', {
+                imageModal: !!imageModal,
+                modalClose: !!modalClose,
+                modalImage: !!modalImage,
+                modalCaption: !!modalCaption,
+                prevBtn: !!prevBtn,
+                nextBtn: !!nextBtn
+            });
+            
+            if (!imageModal) {
+                console.log('❌ Image modal not found');
+                return;
+            }
+            
+            // Collect all clickable images
+            const projectImages = document.querySelectorAll('.project-image, .achievement-image, .profile-image');
+            console.log(`🖼️ Found ${projectImages.length} clickable images`);
+            
+            let currentImageIndex = 0;
+            let images = [];
+            
+            // Prepare images array with src and alt text
+            projectImages.forEach((imgContainer, index) => {
+                const img = imgContainer.querySelector('img');
+                if (img) {
+                    images.push({
+                        src: img.src,
+                        alt: img.alt || 'Image',
+                        container: imgContainer
+                    });
+                    
+                    console.log(`📸 Image ${index}: ${img.src}`);
+                    
+                    // Add click event to each image
+                    imgContainer.addEventListener('click', function(e) {
+                        console.log(`🖱️ Image ${index} clicked`);
+                        e.stopPropagation();
+                        e.preventDefault();
+                        currentImageIndex = index;
+                        openImageModal(currentImageIndex);
+                    });
+                }
+            });
+            
+            console.log(`✅ Total images loaded: ${images.length}`);
+            
+            // Open modal with specific image
+            function openImageModal(index) {
+                if (images[index]) {
+                    console.log(`🖼️ Opening modal with image ${index}: ${images[index].src}`);
+                    modalImage.src = images[index].src;
+                    modalCaption.textContent = images[index].alt;
+                    imageModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Animate modal
+                    if (typeof gsap !== 'undefined') {
+                        gsap.from('.modal-content', {
+                            scale: 0.8,
+                            opacity: 0,
+                            duration: 0.3,
+                            ease: 'back.out(1.7)'
+                        });
+                    }
+                } else {
+                    console.log(`❌ Image at index ${index} not found`);
+                }
+            }
+            
+            // Close modal
+            modalClose.addEventListener('click', function() {
+                console.log('❌ Closing image modal');
+                closeImageModal();
+            });
+            
+            // Close on overlay click
+            imageModal.addEventListener('click', function(e) {
+                if (e.target === imageModal) {
+                    console.log('🎯 Overlay clicked - closing image modal');
+                    closeImageModal();
+                }
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+                    console.log('⌨️ Escape pressed - closing image modal');
+                    closeImageModal();
+                }
+            });
+            
+            // Navigation buttons
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                console.log(`⬅️ Previous image: ${currentImageIndex}`);
+                updateModalImage();
+            });
+            
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                console.log(`➡️ Next image: ${currentImageIndex}`);
+                updateModalImage();
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (imageModal.classList.contains('active')) {
+                    if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                        console.log(`⌨️ ArrowLeft - Previous image: ${currentImageIndex}`);
+                        updateModalImage();
+                    } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        currentImageIndex = (currentImageIndex + 1) % images.length;
+                        console.log(`⌨️ ArrowRight - Next image: ${currentImageIndex}`);
+                        updateModalImage();
+                    }
+                }
+            });
+            
+            // Update modal image with transition
+            function updateModalImage() {
+                if (images[currentImageIndex]) {
+                    console.log(`🔄 Updating modal with image ${currentImageIndex}: ${images[currentImageIndex].src}`);
+                    // Fade out current image
+                    if (typeof gsap !== 'undefined') {
+                        gsap.to(modalImage, {
+                            opacity: 0,
+                            duration: 0.2,
+                            onComplete: () => {
+                                modalImage.src = images[currentImageIndex].src;
+                                modalCaption.textContent = images[currentImageIndex].alt;
+                                gsap.to(modalImage, {
+                                    opacity: 1,
+                                    duration: 0.3
+                                });
+                            }
+                        });
+                    } else {
+                        modalImage.src = images[currentImageIndex].src;
+                        modalCaption.textContent = images[currentImageIndex].alt;
+                    }
+                }
+            }
+            
+            function closeImageModal() {
+                imageModal.classList.remove('active');
+                document.body.style.overflow = '';
+                console.log('🖼️ Image modal closed');
+            }
+            
+            console.log('✅ Image modal initialized');
+        }
+
+        // Make scrollToSection globally available
+        window.scrollToSection = function(sectionId) {
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        };
+    </script>
+</body>
+</html>
